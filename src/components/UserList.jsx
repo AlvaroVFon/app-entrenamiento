@@ -28,7 +28,9 @@ function UserList({ users }) {
             <p className='text-left w-full'>
               {user.nombre} |{user.email} | {user.rol}
             </p>
-            <Link href={`admin/userEdit/${user.userid}`}>
+            <Link
+              href={`admin/userEdit/${user.userid}?email=${user.email}&role=${user.rol}`}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='1em'
