@@ -1,10 +1,10 @@
 import EntrenamientoList from '@/components/EntrenamientosList'
 
 function EntrenamientosPage({ searchParams }) {
+  const { userid } = searchParams
   return (
     <div className=''>
-      <h1>PlaceHolderEntrenamientoPage</h1>
-      <EntrenamientoList searchParams={searchParams} />
+      <EntrenamientoList userid={userid} />
     </div>
   )
 }

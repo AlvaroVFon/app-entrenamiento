@@ -5,6 +5,8 @@ function Header() {
     menu.classList.toggle('hidden')
     menu.classList.toggle('flex')
   }
+  const { userid } = (sessionStorage.getItem('user') &&
+    JSON.parse(sessionStorage.getItem('user'))) || { userid: 0 }
   const date = '20-03-2024'
   return (
     <header className='relative flex justify-between items-center p-5 z-50'>
@@ -56,11 +58,18 @@ function Header() {
             <path d='M6 6l12 12' stroke='#fb923c' />
           </svg>
         </a>
-        <a href='/entrenamientos'>Entrenamientos</a>
-        <a href={`/registros?date=${date}`}>Registros</a>
-        <a href={`/medidas?date=${date}`}>Medidas</a>
-        <a href='/perfil'>Perfil</a>
-        <a href='/'>Logout</a>
+        <a href={`/entrenamiento?userid=${userid}`}>Entrenamientos</a>
+        <a href={`/registros?date=${date}&userid=${userid}`}>Registros</a>
+        <a href={`/medidas?date=${date}&userid=${userid}`}>Medidas</a>
+        <a href={`/perfil?userid=${userid}`}>Perfil</a>
+        <a
+          onClick={() => {
+            sessionStorage.removeItem('user')
+            window.location.href = '/'
+          }}
+        >
+          Logout
+        </a>
       </nav>
     </header>
   )

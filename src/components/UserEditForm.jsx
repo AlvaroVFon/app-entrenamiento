@@ -30,6 +30,7 @@ function UserEditForm({ userID, userEmail, userRole }) {
       <form className='flex justify-center items-center w-full  gap-5 p-6'>
         <input
           type='email'
+          defaultChecked={userEmail}
           placeholder='Nuevo email'
           className='bg-transparent border-b w-full p-3'
         />
@@ -38,7 +39,10 @@ function UserEditForm({ userID, userEmail, userRole }) {
         </button>
       </form>
       <form className='flex justify-center items-center w-full  gap-5 p-6'>
-        <select className='bg-transparent border-b w-full p-3'>
+        <select
+          className='bg-transparent border-b w-full p-3'
+          defaultValue={userRole}
+        >
           <option value='admin' className='bg-dark '>
             Admin
           </option>

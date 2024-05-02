@@ -1,6 +1,28 @@
+'use client'
+import { handleLogin } from '@/actions/handleLogin'
 function LoginForm() {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const formdata = new FormData(e.target)
+    const isLogged = await handleLogin(formdata)
+    if (isLogged) {
+      sessionStorage.setItem('user', JSON.stringify(isLogged))
+      if (isLogged.rol === 'admin') {
+        window.location.href = '/admin'
+      } else {
+        window.location.href = `entrenamientos?userid=${isLogged.userid}`
+      }
+    } else {
+      alert('Invalid credentials')
+      window.location.reload()
+    }
+  }
+
   return (
-    <form className='flex flex-col w-full h-screen items-center justify-center gap-16'>
+    <form
+      onSubmit={handleSubmit}
+      className='flex flex-col w-full h-screen items-center justify-center gap-16'
+    >
       <input
         type='text'
         name='email'
