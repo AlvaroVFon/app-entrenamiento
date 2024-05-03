@@ -10,7 +10,6 @@ const handleLogin = async (formdata) => {
   const foundUser = user[0]
 
   if (user[0].password === password) {
-    console.log(foundUser)
     return foundUser
   } else {
     return null

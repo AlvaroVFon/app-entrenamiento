@@ -11,7 +11,7 @@ function LoginForm() {
       if (isLogged.rol === 'admin') {
         window.location.href = '/admin'
       } else {
-        window.location.href = `entrenamientos?userid=${isLogged.userid}`
+        window.location.href = `/entrenamientos?userid=${isLogged.userid}`
       }
     } else {
       alert('Invalid credentials')

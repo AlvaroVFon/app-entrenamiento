@@ -1,7 +1,7 @@
-import { sql } from '@vercel/postgres'
-
+'use server'
+import pool from '@/utils/postgres'
 const getEjercicios = async () => {
-  const { rows } = await sql`select * from ejercicios`
-  return rows
+  const res = await pool.query('select * from ejercicios')
+  return res.rows
 }
 export { getEjercicios }

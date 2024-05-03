@@ -5,7 +5,7 @@ import {
   updateEmail,
   updateRole,
 } from '@/actions/adminActions'
-function UserEditForm({ userID, userEmail, userRole }) {
+function UserEditForm({ userID, userEmail, userRole, type }) {
   const handleDelete = async () => {
     confirm('Are you sure you want to delete this account?')
       ? await deleteUserById(userID).then(() => window.location.reload())
@@ -66,23 +66,25 @@ function UserEditForm({ userID, userEmail, userRole }) {
         className='flex justify-center items-center gap-5 p-6 w-96'
         onSubmit={handleRoleChange}
       >
-        <select
-          className='bg-transparent border-b p-3 w-96'
-          defaultValue={userRole}
-        >
-          <option
-            value='admin'
-            className='bg-dark'
+        {type === 'admin' && (
+          <select
+            className='bg-transparent border-b p-3 w-96'
+            defaultValue={userRole}
           >
-            Admin
-          </option>
-          <option
-            value='user'
-            className='bg-dark'
-          >
-            User
-          </option>
-        </select>
+            <option
+              value='admin'
+              className='bg-dark'
+            >
+              Admin
+            </option>
+            <option
+              value='user'
+              className='bg-dark'
+            >
+              User
+            </option>
+          </select>
+        )}
         <button
           type='submit'
           className='p-1 border rounded-md'
@@ -91,13 +93,15 @@ function UserEditForm({ userID, userEmail, userRole }) {
         </button>
       </form>
       <form className='flex flex-col justify-center items-center gap-5 p-6 w-96'>
-        <a
-          href='#'
-          onClick={handleDelete}
-          className='text-center text-red-400'
-        >
-          Eliminar Cuenta
-        </a>
+        {type === 'admin' && (
+          <a
+            href='#'
+            onClick={handleDelete}
+            className='text-center text-red-400'
+          >
+            Eliminar Cuenta
+          </a>
+        )}
       </form>
     </div>
   )

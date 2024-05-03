@@ -16,7 +16,7 @@ function NuevoEntrenamientoForm({ ejercicios, userid }) {
       userid,
       nombreentrenamiento,
       ejercicioIds
-    )
+    ).then(() => (window.location.href = `/entrenamientos/?userid=${userid}`))
   }
   return (
     <form

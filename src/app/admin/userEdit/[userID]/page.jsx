@@ -11,6 +11,7 @@ async function UserEditPage({ params, searchParams }) {
         userID={userID}
         userEmail={email}
         userRole={role}
+        type='admin'
       />
     </div>
   )

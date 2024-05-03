@@ -5,6 +5,7 @@ async function EntrenamientoAddPage({ searchParams }) {
   const eid = uuidv4()
   const { userid } = searchParams
   const ejercicios = await getEjercicios()
+  console.log(ejercicios)
   return (
     <div className='flex flex-col justify-center items-center'>
       <h1>Nuevo entrenamiento</h1>
