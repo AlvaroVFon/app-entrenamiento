@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from '@/styles/calendar.module.css'
 import { useRouter, usePathname } from 'next/navigation'
 
-function RegisterForm() {
+function CaracteristicasForm() {
   const defatultDate = new Date().toISOString().split('T')[0]
   const router = useRouter()
   const pathname = usePathname()
@@ -27,7 +27,11 @@ function RegisterForm() {
             strokeLinecap='round'
             strokeLinejoin='round'
           >
-            <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+            <path
+              stroke='none'
+              d='M0 0h24v24H0z'
+              fill='none'
+            />
             <path d='M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z' />
             <path d='M15 12h-6' />
             <path d='M12 9v6' />
@@ -49,4 +53,4 @@ function RegisterForm() {
     </>
   )
 }
-export default RegisterForm
+export default CaracteristicasForm

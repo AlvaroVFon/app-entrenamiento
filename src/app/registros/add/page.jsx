@@ -1,9 +1,13 @@
-import RegisterAdd from '@/components/RegisterAdd'
-function RegisterAddPage() {
+import SelectEntrenamiento from '@/components/SelectEntrenamiento'
+import { getEntrenamientosByUserId } from '@/database/getEntrenamientosByUserId'
+async function RegisterAddPage({ searchParams }) {
+  const { userid } = searchParams
+  const entrenamientos = await getEntrenamientosByUserId(userid)
+
   return (
-    <div>
-      <h1>Register Add</h1>
-      <RegisterAdd />
+    <div className='flex flex-col items-center justify-center gap-5'>
+      <h1 className='text-2xl'>Selecciona un entrenamiento</h1>
+      <SelectEntrenamiento entrenamientos={entrenamientos} />
     </div>
   )
 }

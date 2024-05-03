@@ -1,12 +1,13 @@
 'use client'
+import { useEffect } from 'react'
 function Header() {
   const toggleMenu = () => {
     const menu = document.querySelector('nav')
     menu.classList.toggle('hidden')
     menu.classList.toggle('flex')
   }
-  const { userid } = (sessionStorage.getItem('user') &&
-    JSON.parse(sessionStorage.getItem('user'))) || { userid: 0 }
+  const { userid } = JSON.parse(sessionStorage.getItem('user')) || {}
+
   const date = '20-03-2024'
   return (
     <header className='relative flex justify-between items-center p-5 z-50'>
@@ -29,18 +30,27 @@ function Header() {
         </svg>
       </a>
 
-      <button onClick={toggleMenu} className=''>
+      <button
+        onClick={toggleMenu}
+        className=''
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='50'
           height='50'
           viewBox='0 0 24 24'
         >
-          <path fill='#ffffff' d='M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z' />
+          <path
+            fill='#ffffff'
+            d='M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z'
+          />
         </svg>
       </button>
       <nav className='hidden flex-col absolute w-full h-screen items-center top-0 left-0 gap-16 bg-[#202020] pt-[50px] font-light text-xl'>
-        <a href='#' onClick={toggleMenu}>
+        <a
+          href='#'
+          onClick={toggleMenu}
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='icon icon-tabler icon-tabler-x'
@@ -53,12 +63,22 @@ function Header() {
             strokeLinecap='round'
             strokeLinejoin='round'
           >
-            <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-            <path d='M18 6l-12 12' stroke='#fb923c' />
-            <path d='M6 6l12 12' stroke='#fb923c' />
+            <path
+              stroke='none'
+              d='M0 0h24v24H0z'
+              fill='none'
+            />
+            <path
+              d='M18 6l-12 12'
+              stroke='#fb923c'
+            />
+            <path
+              d='M6 6l12 12'
+              stroke='#fb923c'
+            />
           </svg>
         </a>
-        <a href={`/entrenamiento?userid=${userid}`}>Entrenamientos</a>
+        <a href={`/entrenamientos?userid=${userid}`}>Entrenamientos</a>
         <a href={`/registros?date=${date}&userid=${userid}`}>Registros</a>
         <a href={`/medidas?date=${date}&userid=${userid}`}>Medidas</a>
         <a href={`/perfil?userid=${userid}`}>Perfil</a>
@@ -67,6 +87,7 @@ function Header() {
             sessionStorage.removeItem('user')
             window.location.href = '/'
           }}
+          className='cursor-pointer'
         >
           Logout
         </a>

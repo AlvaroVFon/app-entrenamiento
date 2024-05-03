@@ -1,10 +1,10 @@
 import MedidasList from '@/components/MedidasList'
-import RegisterForm from '@/components/RegisterForm'
+import CaracteristicasForm from '@/components/CaracteristicasForm'
 
 async function MedidasPage({ searchParams }) {
   return (
     <div className='flex flex-col justify-center items-center'>
-      <RegisterForm />
+      <CaracteristicasForm />
       <MedidasList searchParams={searchParams} />
     </div>
   )
