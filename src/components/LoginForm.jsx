@@ -5,6 +5,7 @@ function LoginForm() {
     e.preventDefault()
     const formdata = new FormData(e.target)
     const isLogged = await handleLogin(formdata)
+
     if (isLogged) {
       sessionStorage.setItem('user', JSON.stringify(isLogged))
       if (isLogged.rol === 'admin') {
@@ -41,7 +42,10 @@ function LoginForm() {
       </div>
       <p>
         Don&apos;t have an account?{' '}
-        <a href='/signup' className='font-semibold text-accent'>
+        <a
+          href='/signup'
+          className='font-semibold text-accent'
+        >
           Sign up
         </a>
       </p>
