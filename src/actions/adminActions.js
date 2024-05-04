@@ -26,6 +26,7 @@ import pool from '@/utils/postgres'
 // }
 
 const updatePassword = async (userid, password) => {
+  console.log(userid, password)
   const res = await pool.query(
     'UPDATE usuarios SET password = $1 WHERE userid = $2',
     [password, userid]

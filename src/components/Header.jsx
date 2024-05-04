@@ -1,11 +1,14 @@
 'use client'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
 function Header() {
   const toggleMenu = () => {
     const menu = document.querySelector('nav')
     menu.classList.toggle('hidden')
     menu.classList.toggle('flex')
   }
-  const { userid } = JSON.parse(sessionStorage.getItem('user')) || {}
+  const { userid, rol, nombre } =
+    JSON.parse(sessionStorage.getItem('user')) || {}
 
   const date = '20-03-2024'
   return (
@@ -28,7 +31,7 @@ function Header() {
           />
         </svg>
       </a>
-
+      {userid && <p>Welcome, {nombre}</p>}
       <button
         onClick={toggleMenu}
         className=''

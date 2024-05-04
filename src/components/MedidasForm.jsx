@@ -8,6 +8,8 @@ function MedidasForm({ userid }) {
       () => (window.location.href = `/medidas?userid=${userid}`)
     )
   }
+  const date = new Date()
+  console.log(date)
   return (
     <form
       onSubmit={handleSubmit}
@@ -17,6 +19,12 @@ function MedidasForm({ userid }) {
         type='date'
         name='fechacreacion'
         id='date'
+        defaultValue={new Date()
+          .toISOString()
+          .split('T')[0]
+          .split('-')
+          .reverse()
+          .join('-')}
         className='bg-transparent border-b p-3 w-full text-primary'
       />
       <input

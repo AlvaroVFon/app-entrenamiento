@@ -5,26 +5,26 @@ import {
   updateEmail,
   updateRole,
 } from '@/actions/adminActions'
-function UserEditForm({ userID, userEmail, userRole, type }) {
+function UserEditForm({ userid, userEmail, userRole, type }) {
   const handleDelete = async () => {
     confirm('Are you sure you want to delete this account?')
-      ? await deleteUserById(userID).then(() => window.location.reload())
+      ? await deleteUserById(userid).then(() => (window.location.href = '/'))
       : null
   }
   const handlePasswordChange = async (e) => {
     e.preventDefault()
     const password = e.target[0].value
-    await updatePassword(userID, password).then(() => window.location.reload())
+    await updatePassword(userid, password).then(() => window.location.reload())
   }
   const handleEmailChange = async (e) => {
     e.preventDefault()
     const email = e.target[0].value
-    await updateEmail(userID, email).then(() => window.location.reload())
+    await updateEmail(userid, email).then(() => window.location.reload())
   }
   const handleRoleChange = async (e) => {
     e.preventDefault()
     const role = e.target[0].value
-    await updateRole(userID, role).then(() => window.location.reload())
+    await updateRole(userid, role).then(() => window.location.reload())
   }
   return (
     <div className='grid place-items-center '>

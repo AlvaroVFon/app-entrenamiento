@@ -1,6 +1,6 @@
 'use server'
-import { sql } from '@vercel/postgres'
 import { v4 as uuid } from 'uuid'
+import pool from '@/utils/postgres'
 import { redirect } from 'next/navigation'
 
 const signup = async (formdata) => {
@@ -9,12 +9,12 @@ const signup = async (formdata) => {
   const password = formdata.get('password')
   const userid = uuid()
 
-  const rows =
-    await sql`INSERT INTO usuarios (userid,nombre, email, password,rol) VALUES (${userid},${nombre}, ${email}, ${password}, 'user')`
-      .then(() => {
-        redirect('/login')
-      })
-      .catch((error) => error)
-  return rows
+  const { rows } = await pool
+    .query(
+      'INSERT INTO usuarios (userid,nombre, email, password,rol) VALUES ($1,$2,$3,$4,$5)',
+      [userid, nombre, email, password, 'user']
+    )
+    .catch((error) => error)
+  redirect('/')
 }
 export { signup }
