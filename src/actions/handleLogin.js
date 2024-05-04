@@ -10,7 +10,12 @@ const handleLogin = async (formdata) => {
   const foundUser = user[0]
 
   if (user[0].password === password) {
-    return foundUser
+    return {
+      userid: foundUser.userid,
+      email: foundUser.email,
+      rol: foundUser.rol,
+      nombre: foundUser.nombre,
+    }
   } else {
     return null
   }

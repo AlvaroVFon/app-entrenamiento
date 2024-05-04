@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from 'react'
 function Header() {
   const toggleMenu = () => {
     const menu = document.querySelector('nav')
@@ -78,10 +77,30 @@ function Header() {
             />
           </svg>
         </a>
-        <a href={`/entrenamientos?userid=${userid}`}>Entrenamientos</a>
-        <a href={`/registros?date=${date}&userid=${userid}`}>Registros</a>
-        <a href={`/medidas?date=${date}&userid=${userid}`}>Medidas</a>
-        <a href={`/perfil?userid=${userid}`}>Perfil</a>
+        <a
+          href={`/entrenamientos?userid=${userid}`}
+          className='hover:text-accent duration-300'
+        >
+          Entrenamientos
+        </a>
+        <a
+          href={`/registros?date=${date}&userid=${userid}`}
+          className='hover:text-accent duration-300'
+        >
+          Registros
+        </a>
+        <a
+          href={`/medidas?date=${date}&userid=${userid}`}
+          className='hover:text-accent duration-300'
+        >
+          Medidas
+        </a>
+        <a
+          href={`/perfil?userid=${userid}`}
+          className='hover:text-accent duration-300'
+        >
+          Perfil
+        </a>
         <a
           onClick={() => {
             sessionStorage.removeItem('user')
