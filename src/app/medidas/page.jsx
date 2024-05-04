@@ -1,8 +1,11 @@
 import MedidasList from '@/components/MedidasList'
 import Link from 'next/link'
+import { getMedidasByUserId } from '@/database/getMedidasByUserId'
 
 async function MedidasPage({ searchParams }) {
   const { userid } = searchParams
+  const medidas = await getMedidasByUserId(userid)
+
   return (
     <div className='flex flex-col justify-center items-center'>
       <h1 className='text-2xl'>Medidas</h1>
@@ -26,7 +29,10 @@ async function MedidasPage({ searchParams }) {
         </span>
         Añadir Medidas
       </Link>
-      <MedidasList searchParams={searchParams} />
+      <MedidasList
+        medidas={medidas}
+        userid={userid}
+      />
     </div>
   )
 }

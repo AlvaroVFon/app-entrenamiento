@@ -4,7 +4,9 @@ function MedidasForm({ userid }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formdata = new FormData(e.target)
-    await postMedidas(formdata, userid)
+    await postMedidas(formdata, userid).then(
+      () => (window.location.href = `/medidas?userid=${userid}`)
+    )
   }
   return (
     <form
@@ -12,25 +14,31 @@ function MedidasForm({ userid }) {
       className='flex flex-col items-center justify-center gap-5 p-3 mt-20'
     >
       <input
+        type='date'
+        name='fechacreacion'
+        id='date'
+        className='bg-transparent border-b p-3 w-full text-primary'
+      />
+      <input
         type='number'
         name='altura'
         placeholder='altura'
         id='altura'
-        className='bg-transparent border-b p-3'
+        className='bg-transparent border-b p-3 w-full'
       />
       <input
         type='number'
         name='peso'
         id='peso'
         placeholder='peso'
-        className='bg-transparent border-b p-3'
+        className='bg-transparent border-b p-3 w-full'
       />
       <input
         type='number'
         name='porcentajegraso'
         id='porcentajegraso'
         placeholder='% grasa'
-        className='bg-transparent border-b p-3'
+        className='bg-transparent border-b p-3 w-full'
       />
       <button className='p-3 border rounded hover:text-accent duration-300'>
         Guardar
