@@ -1,10 +1,15 @@
 'use client'
-import ListaEjercicios from './ListaEjercicios'
+import { ListaEjercicios } from './ListaEjercicios'
 import { useState } from 'react'
-function SelectEntrenamiento({ entrenamientos }) {
+function SelectEntrenamiento({
+  entrenamientos,
+  entrenamientosId,
+  ejerciciosEntrenamientos,
+}) {
   const [entrenaientoid, setEntrenamientoId] = useState(null)
   const handleChange = (e) => {
     const entrenaientoid = e.target.value
+    console.log(entrenaientoid)
     setEntrenamientoId(entrenaientoid)
   }
   return (
@@ -16,6 +21,14 @@ function SelectEntrenamiento({ entrenamientos }) {
           className='bg-transparent'
           onChange={handleChange}
         >
+          <option
+            value=''
+            selected
+            disabled
+            className='bg-[#202020] text-white'
+          >
+            Selecciona un entrenamiento
+          </option>
           {entrenamientos?.map((entrenamiento) => (
             <option
               key={entrenamiento.entrenamientoid}
@@ -27,7 +40,10 @@ function SelectEntrenamiento({ entrenamientos }) {
           ))}
         </select>
       </form>
-      <ListaEjerciciosPorEntrenamiento entrenamientoid={entrenaientoid} />
+      <ListaEjercicios
+        entrenamientoid={entrenaientoid}
+        ejerciciosEntrenamientos={ejerciciosEntrenamientos}
+      />
     </div>
   )
 }
