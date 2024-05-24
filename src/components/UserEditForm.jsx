@@ -67,30 +67,32 @@ function UserEditForm({ userid, userEmail, userRole, type }) {
         onSubmit={handleRoleChange}
       >
         {type === 'admin' && (
-          <select
-            className='bg-transparent border-b p-3 w-96'
-            defaultValue={userRole}
-          >
-            <option
-              value='admin'
-              className='bg-dark'
+          <>
+            <select
+              className='bg-transparent border-b p-3 w-96'
+              defaultValue={userRole}
             >
-              Admin
-            </option>
-            <option
-              value='user'
-              className='bg-dark'
+              <option
+                value='admin'
+                className='bg-dark'
+              >
+                Admin
+              </option>
+              <option
+                value='user'
+                className='bg-dark'
+              >
+                User
+              </option>
+            </select>
+            <button
+              type='submit'
+              className='p-1 border rounded-md'
             >
-              User
-            </option>
-          </select>
+              Guardar
+            </button>
+          </>
         )}
-        <button
-          type='submit'
-          className='p-1 border rounded-md'
-        >
-          Guardar
-        </button>
       </form>
       <form className='flex flex-col justify-center items-center gap-5 p-6 w-96'>
         {type === 'admin' && (

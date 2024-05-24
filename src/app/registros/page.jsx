@@ -1,7 +1,13 @@
 import RegisterList from '@/components/ResgisterList'
 import Link from 'next/link'
-function RegistrosPage({ searchParams }) {
+import {
+  getIdEntrenamientosByUserId,
+  getEjerciciosByEntrenamientoIdFromRegistros,
+} from '@/database/RegistrosEntrenamientos'
+async function RegistrosPage({ searchParams }) {
   const { userid } = searchParams
+  const entrenamientos = await getIdEntrenamientosByUserId(userid)
+
   return (
     <>
       <div className='flex flex-col items-center justify-center'>
@@ -24,7 +30,7 @@ function RegistrosPage({ searchParams }) {
           </span>
           Añadir Registro
         </Link>
-        <RegisterList />
+        <RegisterList entrenamientos={entrenamientos} />
       </div>
     </>
   )

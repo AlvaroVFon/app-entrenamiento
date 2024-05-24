@@ -10,7 +10,6 @@ async function RegisterAddPage({ searchParams }) {
   const ejerciciosEntrenamientos = await getEjerciciosByEntrenamientoId(
     entrenamientosID.map((entrenamiento) => entrenamiento.entrenamientoid)
   )
-
   return (
     <div className='flex flex-col items-center justify-center gap-5'>
       <h1 className='text-2xl'>Selecciona un entrenamiento</h1>

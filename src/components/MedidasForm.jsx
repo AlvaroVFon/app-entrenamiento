@@ -8,8 +8,6 @@ function MedidasForm({ userid }) {
       () => (window.location.href = `/medidas?userid=${userid}`)
     )
   }
-  const date = new Date()
-  console.log(date)
   return (
     <form
       onSubmit={handleSubmit}

@@ -9,7 +9,6 @@ function SelectEntrenamiento({
   const [entrenaientoid, setEntrenamientoId] = useState(null)
   const handleChange = (e) => {
     const entrenaientoid = e.target.value
-    console.log(entrenaientoid)
     setEntrenamientoId(entrenaientoid)
   }
   return (
