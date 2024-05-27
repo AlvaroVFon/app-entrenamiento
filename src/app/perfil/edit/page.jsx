@@ -4,7 +4,7 @@ function EditPerfilPage({ searchParams }) {
   const { userid } = searchParams
   return (
     <UserEditForm
-      userid={userid}
+      userID={userid}
       type='user'
     />
   )

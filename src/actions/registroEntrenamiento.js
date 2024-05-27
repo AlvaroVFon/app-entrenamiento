@@ -1,7 +1,6 @@
 'use server'
 import pool from '@/utils/postgres'
 const registroEntrenamiento = async (data) => {
-  console.log(data)
   const { rows } = await pool.query(
     `INSERT INTO registros_entrenamientos(registroentrenamientosid, entrenamientoid, ejercicioid, peso,repeticiones,series) VALUES
     ($1,$2,$3,$4,$5,$6),

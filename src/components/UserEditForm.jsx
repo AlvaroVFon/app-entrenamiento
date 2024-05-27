@@ -5,26 +5,33 @@ import {
   updateEmail,
   updateRole,
 } from '@/actions/adminActions'
-function UserEditForm({ userid, userEmail, userRole, type }) {
-  const handleDelete = async () => {
+function UserEditForm({ userID, userEmail, userRole, type }) {
+  const handleDelete = async (e) => {
+    e.preventDefault()
     confirm('Are you sure you want to delete this account?')
-      ? await deleteUserById(userid).then(() => (window.location.href = '/'))
+      ? await deleteUserById(userID).then(() => {
+          if (userRole === 'admin') {
+            window.location.href = '/admin'
+          } else {
+            window.location.href = '/'
+          }
+        })
       : null
   }
   const handlePasswordChange = async (e) => {
     e.preventDefault()
     const password = e.target[0].value
-    await updatePassword(userid, password).then(() => window.location.reload())
+    await updatePassword(userID, password).then(() => window.location.reload())
   }
   const handleEmailChange = async (e) => {
     e.preventDefault()
     const email = e.target[0].value
-    await updateEmail(userid, email).then(() => window.location.reload())
+    await updateEmail(userID, email).then(() => window.location.reload())
   }
   const handleRoleChange = async (e) => {
     e.preventDefault()
     const role = e.target[0].value
-    await updateRole(userid, role).then(() => window.location.reload())
+    await updateRole(userID, role).then(() => window.location.reload())
   }
   return (
     <div className='grid place-items-center '>
@@ -94,15 +101,17 @@ function UserEditForm({ userid, userEmail, userRole, type }) {
           </>
         )}
       </form>
-      <form className='flex flex-col justify-center items-center gap-5 p-6 w-96'>
+      <form
+        className='flex flex-col justify-center items-center gap-5 p-6 w-96'
+        onSubmit={handleDelete}
+      >
         {type === 'admin' && (
-          <a
+          <button
             href='#'
-            onClick={handleDelete}
             className='text-center text-red-400'
           >
             Eliminar Cuenta
-          </a>
+          </button>
         )}
       </form>
     </div>
