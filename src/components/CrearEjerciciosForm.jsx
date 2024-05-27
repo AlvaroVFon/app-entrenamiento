@@ -24,6 +24,7 @@ function CrearEjerciciosForm({ gruposMusculares }) {
         <textarea
           type='text'
           name='descripcion'
+          placeholder='Descripción del ejercicio'
           id='descripcion'
           className='bg-transparent border-b p-3 w-full resize-none'
         />
